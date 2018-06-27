@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.appty.arabicinstagramhashtags.vo.HashTag;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    static final String INSTA_URL ="https://api.instagram.com/v1/tags/search?q=حلا&access_token=4580320737.5854d71.7ad20f499f1f4ee692c078bf186335dd";
+    static final String INSTA_URL ="https://api.instagram.com/v1/tags/search?q=حلا&access_token=" +
+            "4580320737.5854d71.7ad20f499f1f4ee692c078bf186335dd";
     ArrayAdapter<String> adapter;
     private ListView listView;
     @Override
@@ -32,17 +35,16 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected List<String> doInBackground(Void... voids) {
 
-            List<String> tags = QueryUtills.fetchHashTags(INSTA_URL);
-            return tags;
+            return QueryUtills.fetchHashTags(INSTA_URL);
         }
 
         @Override
-        protected void onPostExecute(List<String> strings) {
-            super.onPostExecute(strings);
+        protected void onPostExecute(List<String> tags) {
+            super.onPostExecute(tags);
 
             adapter.clear();
             if (adapter != null) {
-                adapter.addAll(strings);
+                adapter.addAll(tags);
             }
             }
     }

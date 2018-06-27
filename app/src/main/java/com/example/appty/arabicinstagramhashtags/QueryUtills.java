@@ -3,6 +3,8 @@ package com.example.appty.arabicinstagramhashtags;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.example.appty.arabicinstagramhashtags.vo.HashTag;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -121,9 +123,11 @@ public class QueryUtills {
             return null;
         }
 
-        // Create an empty ArrayList that we can start adding hashTags to
-        List<String> hashTags = new ArrayList<>();
+        // Create an empty ArrayList that we can start adding allHashTags to
+        List<HashTag> allHashTags = new ArrayList<>();
+        List<HashTag> top30Tags = new ArrayList<>();
 
+        List<String> stringTags = new ArrayList<>();
         // Try to parse the JSON response string. If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
         // Catch the exception so the app doesn't crash, and print the error message to the logs.
@@ -133,31 +137,26 @@ public class QueryUtills {
             JSONObject baseJsonResponse = new JSONObject(instaTags);
 
             // Extract the JSONArray associated with the key called "features",
-            // which represents a list of features (or hashTags).
+            // which represents a list of features (or allHashTags).
             JSONArray instaTagsArray = baseJsonResponse.getJSONArray("data");
 
             // For each earthquake in the earthquakeArray, create an {@link Earthquake} object
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < instaTagsArray.length(); i++) {
 
-                // Get a single earthquake at position i within the list of hashTags
+                // Get a single earthquake at position i within the list of allHashTags
                 JSONObject currentTag = instaTagsArray.getJSONObject(i);
 
-                // For a given earthquake, extract the JSONObject associated with the
-                // key called "properties", which represents a list of all properties
-                // for that earthquake.
+                int media_count = currentTag.getInt("media_count");
+                Log.v("medis count",  String.valueOf(media_count));
 
-                // Extract the value for the key called "mag"
+                String name = currentTag.getString("name");
 
-                // Extract the value for the key called "place"
-                String location = currentTag.getString("name");
-
-
-
+                HashTag hashTag = new HashTag(name, media_count);
                 // Create a new {@link Earthquake} object with the magnitude, location, time,
                 // and url from the JSON response.
 
-                // Add the new {@link Earthquake} to the list of hashTags.
-                hashTags.add(location);
+                // Add the new {@link Earthquake} to the list of allHashTags.
+                allHashTags.add(hashTag);
             }
 
         } catch (JSONException e) {
@@ -167,8 +166,17 @@ public class QueryUtills {
             Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
         }
 
-        // Return the list of hashTags
-        return hashTags;
+
+        for (int i=0; i<allHashTags.size(); i++)
+        {
+
+            stringTags.add(allHashTags.get(i).getStringTag());
+        }
+        // Return the list of allHashTags
+        return stringTags;
     }
 
-}
+
+    }
+
+
