@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
     static final String INSTA_URL ="https://api.instagram.com/v1/tags/search?q=حلا&access_token=" +
             "4580320737.5854d71.7ad20f499f1f4ee692c078bf186335dd";
     ArrayAdapter<String> adapter;

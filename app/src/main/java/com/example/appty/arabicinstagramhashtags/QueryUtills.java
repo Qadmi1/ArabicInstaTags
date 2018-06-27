@@ -167,16 +167,33 @@ public class QueryUtills {
         }
 
 
-        for (int i=0; i<allHashTags.size(); i++)
-        {
 
-            stringTags.add(allHashTags.get(i).getStringTag());
-        }
-        // Return the list of allHashTags
-        return stringTags;
+        return fetchTheTop30Tags(allHashTags);
     }
 
+    private static List<String> fetchTheTop30Tags(List<HashTag> allHashTags) {
+        List<String> hashTags = new ArrayList<>();
 
+        int i;
+        int max = 0, index;
+        String maxString = "";
+        for (int j = 0; j < 30; j++) {
+            max = allHashTags.get(0).getMediaCount();
+            maxString = allHashTags.get(0).getStringTag();
+            index = 0;
+            for (i = 1; i < allHashTags.size(); i++) {
+                if (max < allHashTags.get(i).getMediaCount()) {
+                    max = allHashTags.get(i).getMediaCount();
+                    maxString =allHashTags.get(i).getStringTag();
+                    index = i;
+                }
+            }
+            hashTags.add(maxString);
+            allHashTags.set(index, new HashTag("", Integer.MIN_VALUE));
+
+        }
+        return hashTags;
+    }
     }
 
 
