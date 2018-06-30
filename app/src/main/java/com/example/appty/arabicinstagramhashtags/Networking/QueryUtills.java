@@ -1,4 +1,4 @@
-package com.example.appty.arabicinstagramhashtags;
+package com.example.appty.arabicinstagramhashtags.Networking;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,7 +27,7 @@ import java.util.List;
 public class QueryUtills {
     private static final String LOG_TAG = QueryUtills.class.getSimpleName();
 
-    public static List<String> fetchHashTags(String requestUrl) {
+    public static ArrayList<String> fetchHashTags(String requestUrl) {
         // Create URL object
         URL url = null;
 
@@ -48,7 +48,7 @@ public class QueryUtills {
         }
 
         // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
-        List<String> hashTags = extractFeatureFromJson(jsonResponse);
+        ArrayList<String> hashTags = extractFeatureFromJson(jsonResponse);
 
         // Return the list of {@link Earthquake}s
         return hashTags;
@@ -117,14 +117,14 @@ public class QueryUtills {
     }
 
 
-    private static List<String> extractFeatureFromJson(String instaTags) {
+    private static ArrayList<String> extractFeatureFromJson(String instaTags) {
         // If the JSON string is empty or null, then return early.
         if (TextUtils.isEmpty(instaTags)) {
             return null;
         }
 
         // Create an empty ArrayList that we can start adding allHashTags to
-        List<HashTag> allHashTags = new ArrayList<>();
+        ArrayList<HashTag> allHashTags = new ArrayList<>();
         List<HashTag> top30Tags = new ArrayList<>();
 
         List<String> stringTags = new ArrayList<>();
@@ -171,8 +171,8 @@ public class QueryUtills {
         return fetchTheTop30Tags(allHashTags);
     }
 
-    private static List<String> fetchTheTop30Tags(List<HashTag> allHashTags) {
-        List<String> hashTags = new ArrayList<>();
+    private static ArrayList<String> fetchTheTop30Tags(List<HashTag> allHashTags) {
+        ArrayList<String> hashTags = new ArrayList<>();
 
         int i;
         int max = 0, index;
