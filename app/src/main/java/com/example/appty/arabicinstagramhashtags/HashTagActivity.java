@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.appty.arabicinstagramhashtags.Networking.TagsLoader;
@@ -21,23 +22,37 @@ import java.util.ArrayList;
  */
 
 public class HashTagActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<String>> {
-
-    public static final String TAGS = "tags";
+    /** ArrayList that will receive the list of tags from Instagram API */
     ArrayList<String> list;
+
+    /** URL for hashtags data from the Instagram dataset */
     static final String INSTA_URL ="https://api.instagram.com/v1/tags/search";
+
+    /** The access token that will be used in the API */
     private static final String ACCESS_TOKEN = "4580320737.5854d71.7ad20f499f1f4ee692c078bf186335dd";
+
+    /** Constant value for the ArrayList of Strings Loader */
     private static final int LOADER_ID = 1;
+
+    /** The key for the passed tag name */
     public static final String CATEGORY_TAG = "category";
+
+    /** The tag value will be held in this variable and it will be used in the Loader */
     private String hashtag;
+
+    /** TextView that is displayed when the list is empty */
+    private TextView mEmptyStateTextView;
+
     private static final String TAG = "HashTagActivity";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hashtag_activity);
+        // Receive the passed tag value
         hashtag = getIntent().getStringExtra(CATEGORY_TAG);
 
-
-
+        mEmptyStateTextView = findViewById(R.id.empty_view);
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -50,10 +65,16 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
             LoaderManager loaderManager = getLoaderManager();
             // Initialize the loader to create a new loader or use the existing one.
             loaderManager.initLoader(LOADER_ID, null, this);
+        }else {
+            // Otherwise, display error
+            // First, hide loading indicator so error message will be visible
+            View loadingIndicator = findViewById(R.id.loading_indicator);
+            assert loadingIndicator != null;
+            loadingIndicator.setVisibility(View.GONE);
+
+            // Update empty state with no connection error message
+            mEmptyStateTextView.setText(R.string.no_connection);
         }
-        /**
-         * ************** Add else here to handle the empty view if you will use it ****************
-         */
 
     }
 
@@ -72,6 +93,9 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
 
     @Override
     public void onLoadFinished(Loader<ArrayList<String>> loader, ArrayList<String> tags) {
+        // Hide loading indicator because the data has been loaded
+        View loadingIndicator = findViewById(R.id.loading_indicator);
+        loadingIndicator.setVisibility(View.GONE);
         // First clear the adapter
 //        adapter.clear();
 //

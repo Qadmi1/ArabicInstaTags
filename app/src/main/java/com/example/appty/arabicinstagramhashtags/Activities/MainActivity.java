@@ -26,18 +26,10 @@ public class MainActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_main);
 
         ListView listView = findViewById(R.id.list);
-
         categoriesList = getResources().getStringArray(R.array.categories);
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, categoriesList);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
-
-        /**
-         * *****************************************************************************************
-         * ******************************* MUST REVIEW *********************************************
-         * *****************************************************************************************
-         */
-
     }
 
 
@@ -47,10 +39,8 @@ public class MainActivity extends AppCompatActivity implements
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         hashTag = categoriesList[position];
-
         Intent intent = new Intent(MainActivity.this, HashTagActivity.class);
         intent.putExtra(HashTagActivity.CATEGORY_TAG, hashTag);
-
         startActivity(intent);
 
     }
