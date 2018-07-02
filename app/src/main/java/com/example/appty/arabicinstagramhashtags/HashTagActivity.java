@@ -1,6 +1,8 @@
 package com.example.appty.arabicinstagramhashtags;
 
 import android.app.LoaderManager;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Loader;
 import android.net.ConnectivityManager;
@@ -11,7 +13,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appty.arabicinstagramhashtags.Networking.TagsLoader;
 
@@ -43,6 +47,8 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
     /** TextView that is displayed when the list is empty */
     private TextView mEmptyStateTextView;
 
+    private Button copyButton;
+
     private static final String TAG = "HashTagActivity";
 
     @Override
@@ -52,6 +58,8 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         // Receive the passed tag value
         hashtag = getIntent().getStringExtra(CATEGORY_TAG);
 
+        copyButton = findViewById(R.id.copy_button);
+        copyButton.setVisibility(View.GONE);
         mEmptyStateTextView = findViewById(R.id.empty_view);
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -104,7 +112,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
 //            adapter.addAll(tags);
 
         list = tags;
-        StringBuilder builder = new StringBuilder();
+        final StringBuilder builder = new StringBuilder();
         TextView textView = findViewById(R.id.list_of_thirty_tags);
         for (int i =0 ; i<list.size(); i++) {
 
@@ -112,6 +120,18 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
                 textView.setText(builder);
 
         }
+
+        copyButton.setVisibility(View.VISIBLE);
+        copyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
