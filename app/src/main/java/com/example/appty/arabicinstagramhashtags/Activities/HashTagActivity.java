@@ -16,8 +16,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.example.appty.arabicinstagramhashtags.Networking.TagsLoader;
 import com.example.appty.arabicinstagramhashtags.R;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
 
@@ -25,31 +29,58 @@ import java.util.ArrayList;
  * Created by appty on 30/06/18.
  */
 
-public class HashTagActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<String>> {
-    /** ArrayList that will receive the list of tags from Instagram API */
+public class HashTagActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<String>>,
+        View.OnClickListener{
+    /**
+     * ArrayList that will receive the list of tags from Instagram API
+     */
     ArrayList<String> list;
 
-    /** URL for hashtags data from the Instagram dataset */
-    static final String INSTA_URL ="https://api.instagram.com/v1/tags/search";
+    /**
+     * URL for hashtags data from the Instagram dataset
+     */
+    static final String INSTA_URL = "https://api.instagram.com/v1/tags/search";
 
-    /** The access token that will be used in the API */
+    /**
+     * The access token that will be used in the API
+     */
     private static final String ACCESS_TOKEN = "4580320737.5854d71.7ad20f499f1f4ee692c078bf186335dd";
 
-    /** Constant value for the ArrayList of Strings Loader */
+    /**
+     * Constant value for the ArrayList of Strings Loader
+     */
     private static final int LOADER_ID = 1;
 
-    /** The key for the passed tag name */
+    /**
+     * The key for the passed tag name
+     */
     public static final String CATEGORY_TAG = "category";
 
-    /** The tag value will be held in this variable and it will be used in the Loader */
+    /**
+     * The tag value will be held in this variable and it will be used in the Loader
+     */
     private String hashtag;
 
-    /** TextView that is displayed when the list is empty */
+    /**
+     * TextView that is displayed when the list is empty
+     */
     private TextView mEmptyStateTextView;
 
     private Button copyButton;
 
+    private InterstitialAd mInterstitialAd;
+
+    //declare boolean
+    boolean clicked = false;
+
+    /**
+     * Banned Ad view
+     */
+    private AdView mAdView;
+
     private static final String TAG = "HashTagActivity";
+
+    final StringBuilder builder = new StringBuilder();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +88,11 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         setContentView(R.layout.hashtag_activity);
         // Receive the passed tag value
         hashtag = getIntent().getStringExtra(CATEGORY_TAG);
+
+        addBannerAdd();
+
+        addInterstitialAd();
+
 
         copyButton = findViewById(R.id.copy_button);
         copyButton.setVisibility(View.GONE);
@@ -73,7 +109,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
             LoaderManager loaderManager = getLoaderManager();
             // Initialize the loader to create a new loader or use the existing one.
             loaderManager.initLoader(LOADER_ID, null, this);
-        }else {
+        } else {
             // Otherwise, display error
             // First, hide loading indicator so error message will be visible
             View loadingIndicator = findViewById(R.id.loading_indicator);
@@ -85,6 +121,22 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    }
+
+    private void addInterstitialAd() {
+        MobileAds.initialize(this,
+                "ca-app-pub-3940256099942544~3347511713");
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+    }
+
+    private void addBannerAdd() {
+        // Find the Ad view then build it then load it(Banner)
+        mAdView = findViewById(R.id.adView2);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     @Override
@@ -105,33 +157,18 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         // Hide loading indicator because the data has been loaded
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
-        // First clear the adapter
-//        adapter.clear();
-//
-//        // Make sure that that the passed List is not null or empty
-//            if (tags != null && !tags.isEmpty())
-//            adapter.addAll(tags);
 
         list = tags;
-        final StringBuilder builder = new StringBuilder();
         TextView textView = findViewById(R.id.list_of_thirty_tags);
-        for (int i =0 ; i<list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
 
-                builder.append(getString(R.string.hash) + list.get(i)+"  ");
-                textView.setText(builder);
+            builder.append(getString(R.string.hash) + list.get(i) + "  ");
+            textView.setText(builder);
 
         }
 
         copyButton.setVisibility(View.VISIBLE);
-        copyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
-                clipboard.setPrimaryClip(clip);
-                Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
-            }
-        });
+        copyButton.setOnClickListener(this);
 
     }
 
@@ -139,5 +176,32 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
     public void onLoaderReset(Loader<ArrayList<String>> loader) {
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (clicked) {
+            mInterstitialAd.show();
 
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (clicked) {
+            mInterstitialAd.show();
+
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        clicked = true;
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
+        clipboard.setPrimaryClip(clip);
+        Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
+
+    }
 }

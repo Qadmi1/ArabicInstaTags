@@ -1,6 +1,5 @@
 package com.example.appty.arabicinstagramhashtags.Activities;
 
-import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.support.v7.app.AppCompatActivity;
@@ -20,11 +19,16 @@ import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    /** List of category names */
     private String[] categoryListName;
+
+    /** List of category images */
     private TypedArray categoryListImage;
+
+    /** Category Item list that will hold the name and the image of the category */
     ArrayList<CategoryItem> listOfCategories = new ArrayList<>();
 
+    /** Banned Ad view */
     private AdView mAdView;
 
     @Override
@@ -38,10 +42,8 @@ public class MainActivity extends AppCompatActivity {
         categoryListName = getResources().getStringArray(R.array.categories);
         categoryListImage = getResources().obtainTypedArray(R.array.category_images);
 
-        // Find the Ad view then build it then load it(Banner)
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        BannerAdd();
+
 
         // Fill the Category Item Array list
         for (int i=0; i<categoryListName.length; i++)
@@ -103,6 +105,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    private void BannerAdd() {
+        // Find the Ad view then build it then load it(Banner)
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+    }
 
 
     private int span() {
