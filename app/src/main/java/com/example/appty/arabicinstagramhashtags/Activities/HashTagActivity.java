@@ -80,7 +80,8 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
     private InterstitialAd mInterstitialAd;
 
     //declare boolean
-    boolean clicked = false;
+    boolean copyClicked = false;
+    boolean socialCicked = false;
 
     /**
      * Banned Ad view
@@ -228,9 +229,12 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
     @Override
     protected void onPause() {
         super.onPause();
-        if (clicked) {
+        if (copyClicked) {
             mInterstitialAd.show();
 
+        }
+        if (socialCicked){
+            mInterstitialAd.show();
         }
     }
 
@@ -238,10 +242,11 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
     protected void onStop() {
         super.onStop();
 
-        if (clicked) {
+        if (copyClicked) {
             mInterstitialAd.show();
 
         }
+
     }
 
     private void openInstaApp(){
@@ -259,26 +264,50 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         }
     }
 
+    private void openTwitterApp(){
+        PackageManager manager = this.getPackageManager();
+        try {
+            Intent intent = manager.getLaunchIntentForPackage("com.twitter.android");
+            if (intent == null) {
+                Log.d(TAG,"intent==null");
+                throw new PackageManager.NameNotFoundException();
+            }
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+            this.startActivity(intent);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void onClick(View view) {
         ClipboardManager clipboard;
         ClipData clip;
         switch (view.getId()) {
             case R.id.copy_image_button:
-                clicked = true;
+                copyClicked = true;
                 clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.copy_insta_button:
-                clicked = true;
+                socialCicked = true;
                 clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
 
                 openInstaApp();
+
+
+            case R.id.copy_twitter_button:
+                socialCicked = true;
+                clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
+
+                openTwitterApp();
 
 
                 break;
