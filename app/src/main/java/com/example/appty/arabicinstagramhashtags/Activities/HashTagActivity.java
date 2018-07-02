@@ -1,4 +1,4 @@
-package com.example.appty.arabicinstagramhashtags;
+package com.example.appty.arabicinstagramhashtags.Activities;
 
 import android.app.LoaderManager;
 import android.content.ClipData;
@@ -11,13 +11,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appty.arabicinstagramhashtags.Networking.TagsLoader;
+import com.example.appty.arabicinstagramhashtags.R;
 
 import java.util.ArrayList;
 
@@ -83,6 +83,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
             // Update empty state with no connection error message
             mEmptyStateTextView.setText(R.string.no_connection);
         }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 

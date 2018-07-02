@@ -2,8 +2,8 @@
     <string name="app_name">ArabicInstagramHashTags</string>
     <string name="hash">#</string>
     <string name="no_connection">No internet Connection</string>
-    <string name="copy_to_clipboard">Copy to Clipboard</string>
-    <string name="copy_success">Copy Success</string>
+    <string name="copy_to_clipboard">اضغط للنسخ</string>
+    <string name="copy_success">تم النسخ!</string>
     <string name="copy_label">copied</string>
 
     <string-array name="categories">

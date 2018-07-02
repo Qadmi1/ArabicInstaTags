@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HashTagActivity"/>
+        <activity android:name=".Activities.HashTagActivity"
+            android:parentActivityName=".Activities.MainActivity"/>
     </application>
 
 </manifest>

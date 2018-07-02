@@ -1,4 +1,4 @@
-package com.example.appty.arabicinstagramhashtags;
+package com.example.appty.arabicinstagramhashtags.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.appty.arabicinstagramhashtags.Activities.MainActivity;
+import com.example.appty.arabicinstagramhashtags.Activities.HashTagActivity;
+import com.example.appty.arabicinstagramhashtags.R;
 import com.example.appty.arabicinstagramhashtags.vo.CategoryItem;
 
 import java.util.ArrayList;
