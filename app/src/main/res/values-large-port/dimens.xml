@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="card_view">180dp</dimen>
-    <dimen name="list_of_tags_width">700dp</dimen>
-    <dimen name="list_of_tags_height">450dp</dimen>
+    <dimen name="list_of_tags_width">500dp</dimen>
+    <dimen name="list_of_tags_height">350dp</dimen>
 </resources>

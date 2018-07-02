@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="card_view">120dp</dimen>
+    <dimen name="list_of_tags_width">300dp</dimen>
+    <dimen name="list_of_tags_height">250dp</dimen>
+    <dimen name="copy_button_height">80dp</dimen>
 </resources>

@@ -15,10 +15,8 @@
         android:layout_centerInParent="true"
         android:background="#fff"
         android:padding="8dp"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/blue"
-
-        />
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/blue" />
 
 
     <!-- Empty view is only visible when the list has no items. -->
@@ -27,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textAppearance="?android:textAppearanceMedium" />
+        android:textAppearance="?android:textAppearanceLarge" />
 
     <ProgressBar
         android:id="@+id/loading_indicator"
@@ -42,7 +40,9 @@
         android:layout_below="@+id/list_of_thirty_tags"
         android:layout_centerHorizontal="true"
         android:background="#fff"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+
+        >
 
         <ImageButton
             android:id="@+id/copy_image_button"

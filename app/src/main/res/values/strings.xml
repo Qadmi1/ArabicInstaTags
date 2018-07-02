@@ -15,11 +15,11 @@
     </string-array>
 
     <array name="category_images">
-        <item>@drawable/ic_launcher_background</item>
-        <item>@drawable/ic_launcher_background</item>
-        <item>@drawable/ic_launcher_background</item>
-        <item>@drawable/ic_launcher_background</item>
-        <item>@drawable/ic_launcher_background</item>
+        <item>@drawable/doctor</item>
+        <item>@drawable/choco</item>
+        <item>@drawable/accessory</item>
+        <item>@drawable/football</item>
+        <item>@drawable/parrot</item>
     </array>
 
 </resources>

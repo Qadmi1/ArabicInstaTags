@@ -4,15 +4,18 @@ import android.app.LoaderManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +33,7 @@ import java.util.ArrayList;
  */
 
 public class HashTagActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<String>>,
-        View.OnClickListener{
+        View.OnClickListener {
     /**
      * ArrayList that will receive the list of tags from Instagram API
      */
@@ -66,7 +69,13 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
      */
     private TextView mEmptyStateTextView;
 
-    private Button copyButton;
+    private ImageButton copyButton;
+
+    private ImageButton instaCopyButton;
+
+    private ImageButton faceCopyButton;
+
+    private ImageButton twitterCopyButton;
 
     private InterstitialAd mInterstitialAd;
 
@@ -89,17 +98,20 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         // Receive the passed tag value
         hashtag = getIntent().getStringExtra(CATEGORY_TAG);
 
+        // Add the banner Add
         addBannerAdd();
 
+        // Add the interstitial Add
         addInterstitialAd();
 
 
-        copyButton = findViewById(R.id.copy_button);
-        copyButton.setVisibility(View.GONE);
-        mEmptyStateTextView = findViewById(R.id.empty_view);
+        findViews();
+
+
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
+        // Check the connection
         assert cm != null;
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
@@ -119,9 +131,36 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
             // Update empty state with no connection error message
             mEmptyStateTextView.setText(R.string.no_connection);
         }
+        // Add the up button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
+
+    private void findViews() {
+        copyButton = findViewById(R.id.copy_image_button);
+
+        // Make the button invisible until the tags finish loading
+        copyButton.setVisibility(View.GONE);
+
+        mEmptyStateTextView = findViewById(R.id.empty_view);
+
+        instaCopyButton = findViewById(R.id.copy_insta_button);
+
+        // Make the button invisible until the tags finish loading
+        instaCopyButton.setVisibility(View.GONE);
+
+        faceCopyButton = findViewById(R.id.copy_face_button);
+
+        // Make the button invisible until the tags finish loading
+        faceCopyButton.setVisibility(View.GONE);
+
+        // Make the button invisible until the tags finish loading
+        twitterCopyButton = findViewById(R.id.copy_twitter_button);
+
+        // Make the button invisible until the tags finish loading
+        twitterCopyButton.setVisibility(View.GONE);
+    }
+
 
     private void addInterstitialAd() {
         MobileAds.initialize(this,
@@ -170,6 +209,16 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         copyButton.setVisibility(View.VISIBLE);
         copyButton.setOnClickListener(this);
 
+        instaCopyButton.setVisibility(View.VISIBLE);
+        instaCopyButton.setOnClickListener(this);
+
+        faceCopyButton.setVisibility(View.VISIBLE);
+        faceCopyButton.setOnClickListener(this);
+
+        twitterCopyButton.setVisibility(View.VISIBLE);
+        twitterCopyButton.setOnClickListener(this);
+
+        getSupportActionBar().setTitle(hashtag);
     }
 
     @Override
@@ -195,13 +244,46 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         }
     }
 
+    private void openInstaApp(){
+        PackageManager manager = this.getPackageManager();
+        try {
+            Intent intent = manager.getLaunchIntentForPackage("com.instagram.android");
+            if (intent == null) {
+                Log.d(TAG,"intent==null");
+                throw new PackageManager.NameNotFoundException();
+            }
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+            this.startActivity(intent);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void onClick(View view) {
-        clicked = true;
-        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
-        clipboard.setPrimaryClip(clip);
-        Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
+        ClipboardManager clipboard;
+        ClipData clip;
+        switch (view.getId()) {
+            case R.id.copy_image_button:
+                clicked = true;
+                clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.copy_insta_button:
+                clicked = true;
+                clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
+
+                openInstaApp();
+
+
+                break;
+        }
+
 
     }
 }

@@ -16,9 +16,7 @@
         android:background="#fff"
         android:padding="8dp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/blue"
-
-        />
+        android:textColor="@color/blue" />
 
 
     <!-- Empty view is only visible when the list has no items. -->
