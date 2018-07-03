@@ -12,8 +12,8 @@
         android:layout_width="@dimen/card_view"
         android:layout_height="@dimen/card_view"
         app:cardBackgroundColor="@color/blue"
-        app:cardCornerRadius="60dp"
-        app:cardElevation="8dp">
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="4dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -21,8 +21,8 @@
 
             <ImageView
                 android:id="@+id/category_image"
-                android:layout_width="104dp"
-                android:layout_height="67dp"
+                android:layout_width="@dimen/image"
+                android:layout_height="@dimen/image"
                 android:layout_centerInParent="true"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/choco" />
@@ -36,7 +36,6 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceLarge"
         android:layout_below="@id/card_layout"
-        android:text="t"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
         android:layout_marginTop="4dp"
