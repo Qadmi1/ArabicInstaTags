@@ -1,48 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parent"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:padding="12dp">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/card_layout"
         android:layout_width="@dimen/card_view"
         android:layout_height="@dimen/card_view"
         app:cardBackgroundColor="@color/blue"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="4dp">
+        app:cardCornerRadius="60dp"
+        app:cardElevation="8dp">
 
-        <android.support.constraint.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/category_image"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/category_text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="104dp"
+                android:layout_height="67dp"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
                 app:srcCompat="@drawable/choco" />
 
-            <TextView
-                android:id="@+id/category_text"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:textAppearance="?android:textAppearanceLarge"/>
-        </android.support.constraint.ConstraintLayout>
-    </android.support.v7.widget.CardView>
 
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+    <TextView
+        android:id="@+id/category_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:layout_below="@id/card_layout"
+        android:text="t"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:layout_marginTop="4dp"
+        />
 </RelativeLayout>
