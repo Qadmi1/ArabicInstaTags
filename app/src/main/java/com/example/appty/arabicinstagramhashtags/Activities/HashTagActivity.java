@@ -178,6 +178,8 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
             @Override
             public void onAdLoaded() {
                 // Code to be executed when an ad finishes loading.
+                mInterstitialAd.show();
+
             }
 
             @Override
