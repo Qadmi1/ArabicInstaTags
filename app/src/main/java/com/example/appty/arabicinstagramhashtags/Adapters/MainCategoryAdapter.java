@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.appty.arabicinstagramhashtags.Activities.HashTagActivity;
+import com.example.appty.arabicinstagramhashtags.Activities.SecondaryPage;
 import com.example.appty.arabicinstagramhashtags.R;
 import com.example.appty.arabicinstagramhashtags.vo.CategoryItem;
 
@@ -21,12 +22,12 @@ import java.util.ArrayList;
  * Created by appty on 01/07/18.
  */
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyViewHolder>{
+public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapter.MyViewHolder> {
 
     private ArrayList<CategoryItem> data;
     private Context context;
 
-    public CategoryAdapter(ArrayList<CategoryItem> data, Context context) {
+    public MainCategoryAdapter(ArrayList<CategoryItem> data, Context context) {
         this.data = data;
         this.context = context;
     }
@@ -40,18 +41,25 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        TextView categoryName = holder.categoryName;
+        final TextView categoryName = holder.categoryName;
         ImageView categoryImage = holder.categoryImage;
-
+//        if (position == 3 ) {
+//            categoryName.setTextSize(14);
+//        }
+//        else if ( position == 8)
+//        {
+//            categoryName.setTextSize(12);
+//
+//        }
         categoryName.setText(data.get(position).getCategoryName());
         categoryImage.setImageResource(data.get(position).getCategoryImage());
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            String hashTag;
-                hashTag = data.get(position).getCategoryName();
-                Intent intent = new Intent(context, HashTagActivity.class);
-                intent.putExtra(HashTagActivity.CATEGORY_TAG, hashTag);
+
+
+                Intent intent = new Intent(context, SecondaryPage.class);
+                intent.putExtra(SecondaryPage.CATEGORY_INDEX, position);
                 context.startActivity(intent);
             }
         });
@@ -62,7 +70,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         return data.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView categoryName;
         ImageView categoryImage;
@@ -70,13 +78,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
         public MyViewHolder(View itemView) {
             super(itemView);
-        categoryName = itemView.findViewById(R.id.category_text);
-        categoryImage = itemView.findViewById(R.id.category_image);
-        parentLayout = itemView.findViewById(R.id.parent);
+            categoryName = itemView.findViewById(R.id.category_text);
+            categoryImage = itemView.findViewById(R.id.category_image);
+            parentLayout = itemView.findViewById(R.id.parent);
         }
     }
-
-
 
 
 }

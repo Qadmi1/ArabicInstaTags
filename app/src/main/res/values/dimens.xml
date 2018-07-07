@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="card_view">108dp</dimen>
-    <dimen name="image">80</dimen>
+    <dimen name="card_view">90dp</dimen>
+    <dimen name="image">60dp</dimen>
     <dimen name="list_of_tags_width">300dp</dimen>
     <dimen name="list_of_tags_height">250dp</dimen>
     <dimen name="copy_button_height">80dp</dimen>
-    <dimen name="card_corner_radius">55dp</dimen>
+    <dimen name="card_corner_radius">20dp</dimen>
 </resources>

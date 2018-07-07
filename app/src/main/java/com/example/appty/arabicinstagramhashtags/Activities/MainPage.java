@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import com.example.appty.arabicinstagramhashtags.Adapters.CategoryAdapter;
+import com.example.appty.arabicinstagramhashtags.Adapters.MainCategoryAdapter;
 import com.example.appty.arabicinstagramhashtags.R;
 import com.example.appty.arabicinstagramhashtags.vo.CategoryItem;
 import com.google.android.gms.ads.AdRequest;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainPage extends AppCompatActivity {
 
     /** List of category names */
     private String[] categoryListName;
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         // Find the recycler view
         RecyclerView recyclerView = findViewById(R.id.recycler_grid);
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(layoutManager);
 
-        final RecyclerView.Adapter adapter = new CategoryAdapter(listOfCategories, MainActivity.this);
+        final RecyclerView.Adapter adapter = new MainCategoryAdapter(listOfCategories, MainPage.this);
 
 
         ItemTouchHelper.Callback callbacks = new ItemTouchHelper.Callback() {

@@ -1,25 +1,8 @@
 <resources>
-    <string name="app_name">ArabicInstagramHashTags</string>
+    <string name="app_name">ArabicInstaTags</string>
     <string name="hash">#</string>
     <string name="no_connection">No internet Connection</string>
     <string name="copy_to_clipboard">اضغط للنسخ</string>
     <string name="copy_success">تم النسخ!</string>
     <string name="copy_label">copied</string>
-
-    <string-array name="categories">
-        <item>طب</item>
-        <item>حلا</item>
-        <item>اكسسوار</item>
-        <item>كورة</item>
-        <item>ببغاء</item>
-    </string-array>
-
-    <array name="category_images">
-        <item>@drawable/doctor</item>
-        <item>@drawable/choco</item>
-        <item>@drawable/accessory</item>
-        <item>@drawable/football</item>
-        <item>@drawable/parrot</item>
-    </array>
-
 </resources>
