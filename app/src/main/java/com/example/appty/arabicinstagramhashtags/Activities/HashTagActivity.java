@@ -19,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.appty.arabicinstagramhashtags.vo.HashTag;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -136,6 +137,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         }
         // Add the up button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mInterstitialAd.show();
 
     }
 
@@ -276,7 +278,6 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
     }
 
 
-
     @Override
     protected void onPause() {
         super.onPause();
@@ -293,15 +294,11 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
 
         if (copyClicked) {
             mInterstitialAd.show();
-
-        }
-        if (instaCicked) {
+        } else if (instaCicked) {
             mInterstitialAd.show();
-        }
-        if (faceClicked) {
+        } else if (faceClicked) {
             mInterstitialAd.show();
-        }
-        if (twitterClicked) {
+        } else if (twitterClicked) {
             mInterstitialAd.show();
         }
 
@@ -309,6 +306,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
     }
 
     private void openInstaApp() {
+
         PackageManager manager = this.getPackageManager();
         try {
             Intent intent = manager.getLaunchIntentForPackage("com.instagram.android");
@@ -324,18 +322,23 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
     }
 
     private void openFaceaApp() {
-        PackageManager manager = this.getPackageManager();
+        Intent facebookIntent = openFacebook(this);
+        startActivity(facebookIntent);
+    }
+    public static Intent openFacebook(Context context) {
+
         try {
-            Intent intent = manager.getLaunchIntentForPackage("com.facebook.android");
-            if (intent == null) {
-                Log.d(TAG, "intent==null");
-                throw new PackageManager.NameNotFoundException();
-            }
-            intent.addCategory(Intent.CATEGORY_LAUNCHER);
-            this.startActivity(intent);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+            context.getPackageManager()
+                    .getPackageInfo("com.facebook.katana", 0);
+            return new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("fb://page/376227335860239"));
+        } catch (Exception e){
+
+            return new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://www.facebook.com/karthikofficialpage"));
         }
+
+
     }
 
     private void openTwitterApp() {
@@ -364,9 +367,10 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
                 clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
+
                 break;
+
             case R.id.copy_insta_button:
-                copyClicked = true;
 
                 instaCicked = true;
                 clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
@@ -375,18 +379,16 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
                 Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
 
                 openInstaApp();
-
                 break;
-            case R.id.copy_face_button:
-                copyClicked = true;
 
+            case R.id.copy_face_button:
                 faceClicked = true;
                 clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
 
-                onStop();
+                openFaceaApp();
                 break;
 
             case R.id.copy_twitter_button:
@@ -396,7 +398,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
 
-                onStop();
+                openTwitterApp();
                 break;
         }
 
