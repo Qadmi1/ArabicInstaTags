@@ -36,7 +36,6 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         // Find the recycler view
         RecyclerView recyclerView = findViewById(R.id.recycler_grid);
         // Receive the resources
@@ -44,7 +43,6 @@ public class MainPage extends AppCompatActivity {
         categoryListImage = getResources().obtainTypedArray(R.array.category_images);
 
         BannerAdd();
-
 
         // Fill the Category Item Array list
         for (int i=0; i<categoryListName.length; i++)
@@ -57,7 +55,6 @@ public class MainPage extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         final RecyclerView.Adapter adapter = new MainCategoryAdapter(listOfCategories, MainPage.this);
-
 
         ItemTouchHelper.Callback callbacks = new ItemTouchHelper.Callback() {
             // Try reducing the movement

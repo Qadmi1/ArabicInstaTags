@@ -82,10 +82,10 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
     private InterstitialAd mInterstitialAd;
 
     //declare boolean
-    boolean copyClicked = false;
-    boolean instaCicked = false;
-    boolean faceClicked = false;
-    boolean twitterClicked = false;
+    private boolean copyClicked = false;
+    private boolean instaCicked = false;
+    private boolean faceClicked = false;
+    private boolean twitterClicked = false;
     /**
      * Banned Ad view
      */
@@ -108,9 +108,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         // Add the interstitial Add
         addInterstitialAd();
 
-
         findViews();
-
 
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -137,7 +135,6 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         }
         // Add the up button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
     private void findViews() {
@@ -158,7 +155,6 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         // Make the button invisible until the tags finish loading
         faceCopyButton.setVisibility(View.GONE);
 
-        // Make the button invisible until the tags finish loading
         twitterCopyButton = findViewById(R.id.copy_twitter_button);
 
         // Make the button invisible until the tags finish loading
@@ -206,9 +202,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
                 if (twitterClicked) {
                     openTwitterApp();
                 }
-
             }
-
         });
     }
 
@@ -221,11 +215,8 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
 
     @Override
     public Loader<ArrayList<String>> onCreateLoader(int id, Bundle args) {
-
-
         Uri baseUri = Uri.parse(INSTA_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
-
         uriBuilder.appendQueryParameter("q", hashtag);
         uriBuilder.appendQueryParameter("access_token", ACCESS_TOKEN);
 
@@ -246,11 +237,6 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
             textView.setText(builder);
 
         }
-
-        copyClicked = false;
-        instaCicked = false;
-        faceClicked = false;
-        twitterClicked = false;
 
         copyButton.setVisibility(View.VISIBLE);
         copyButton.setOnClickListener(this);
@@ -301,12 +287,9 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         } else if (twitterClicked) {
             mInterstitialAd.show();
         }
-
-
     }
 
     private void openInstaApp() {
-
         PackageManager manager = this.getPackageManager();
         try {
             Intent intent = manager.getLaunchIntentForPackage("com.instagram.android");
@@ -325,20 +308,18 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         Intent facebookIntent = openFacebook(this);
         startActivity(facebookIntent);
     }
-    public static Intent openFacebook(Context context) {
 
+    public static Intent openFacebook(Context context) {
         try {
             context.getPackageManager()
                     .getPackageInfo("com.facebook.katana", 0);
             return new Intent(Intent.ACTION_VIEW,
                     Uri.parse("fb://page/376227335860239"));
-        } catch (Exception e){
+        } catch (Exception e) {
 
             return new Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://www.facebook.com/karthikofficialpage"));
         }
-
-
     }
 
     private void openTwitterApp() {
@@ -367,17 +348,14 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
                 clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
-
                 break;
 
             case R.id.copy_insta_button:
-
                 instaCicked = true;
                 clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
-
                 openInstaApp();
                 break;
 
@@ -397,11 +375,8 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
                 clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
-
                 openTwitterApp();
                 break;
         }
-
-
     }
 }
