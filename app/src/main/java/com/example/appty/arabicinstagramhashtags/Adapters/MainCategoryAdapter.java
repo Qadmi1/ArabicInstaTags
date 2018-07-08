@@ -56,10 +56,11 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                String hashTag;
+                hashTag = data.get(position).getCategoryName();
                 Intent intent = new Intent(context, SecondaryPage.class);
                 intent.putExtra(SecondaryPage.CATEGORY_INDEX, position);
+                intent.putExtra(SecondaryPage.CATEGORY_TITLE, hashTag);
                 context.startActivity(intent);
             }
         });

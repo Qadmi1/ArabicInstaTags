@@ -137,7 +137,6 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         }
         // Add the up button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        mInterstitialAd.show();
 
     }
 
