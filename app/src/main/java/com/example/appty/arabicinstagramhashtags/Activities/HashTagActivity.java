@@ -29,6 +29,7 @@ import com.example.appty.arabicinstagramhashtags.R;
 import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by appty on 30/06/18.
@@ -83,8 +84,13 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
 
     //declare boolean
     private boolean copyClicked = false;
+    private int instaCounter = 0;
     private boolean instaCicked = false;
+
+    private int faceCounter = 0;
     private boolean faceClicked = false;
+
+    private int twitterCounter = 0;
     private boolean twitterClicked = false;
     /**
      * Banned Ad view
@@ -173,7 +179,6 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
             @Override
             public void onAdLoaded() {
                 // Code to be executed when an ad finishes loading.
-
             }
 
             @Override
@@ -256,6 +261,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         instaCicked = false;
         faceClicked = false;
         twitterClicked = false;
+
     }
 
     @Override
@@ -280,11 +286,15 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
 
         if (copyClicked) {
             mInterstitialAd.show();
-        } else if (instaCicked) {
+        }
+        if (instaCicked) {
             mInterstitialAd.show();
-        } else if (faceClicked) {
+        }
+        if (faceClicked) {
             mInterstitialAd.show();
-        } else if (twitterClicked) {
+
+        }
+        if (twitterClicked) {
             mInterstitialAd.show();
         }
     }
@@ -352,30 +362,45 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
 
             case R.id.copy_insta_button:
                 instaCicked = true;
+                instaCounter++;
                 clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
-                openInstaApp();
+                if (instaCounter <= 1) {
+                    mInterstitialAd.show();
+                } else {
+                    openInstaApp();
+                }
                 break;
 
             case R.id.copy_face_button:
                 faceClicked = true;
+                faceCounter++;
                 clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
 
-                openFaceaApp();
+                if (faceCounter <= 1) {
+                    mInterstitialAd.show();
+                } else {
+                    openFaceaApp();
+                }
                 break;
 
             case R.id.copy_twitter_button:
                 twitterClicked = true;
+                twitterCounter ++;
                 clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
                 clipboard.setPrimaryClip(clip);
                 Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
-                openTwitterApp();
+                if (twitterCounter <= 1) {
+                    mInterstitialAd.show();
+                } else {
+                    openTwitterApp();
+                }
                 break;
         }
     }
