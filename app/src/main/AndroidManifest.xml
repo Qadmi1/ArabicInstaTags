@@ -27,7 +27,9 @@
             android:parentActivityName=".Activities.MainPage" />
         <activity
             android:name=".Activities.SearchTags"
-            android:parentActivityName=".Activities.MainPage" />
+            android:parentActivityName=".Activities.MainPage"
+            android:windowSoftInputMode="adjustPan"
+        />
     </application>
 
 </manifest>
