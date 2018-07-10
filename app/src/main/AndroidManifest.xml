@@ -25,6 +25,9 @@
         <activity
             android:name=".Activities.SecondaryPage"
             android:parentActivityName=".Activities.MainPage" />
+        <activity
+            android:name=".Activities.SearchTags"
+            android:parentActivityName=".Activities.MainPage" />
     </application>
 
 </manifest>

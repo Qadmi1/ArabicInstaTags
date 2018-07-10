@@ -384,6 +384,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
 
                 if (faceCounter <= 1) {
                     mInterstitialAd.show();
+
                 } else {
                     openFaceaApp();
                 }

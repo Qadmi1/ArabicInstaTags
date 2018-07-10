@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.appty.arabicinstagramhashtags.Activities.HashTagActivity;
+import com.example.appty.arabicinstagramhashtags.Activities.SearchTags;
 import com.example.appty.arabicinstagramhashtags.Activities.SecondaryPage;
 import com.example.appty.arabicinstagramhashtags.R;
 import com.example.appty.arabicinstagramhashtags.vo.CategoryItem;
@@ -56,14 +57,21 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String hashTag;
-                hashTag = data.get(position).getCategoryName();
-                Intent intent = new Intent(context, SecondaryPage.class);
-                intent.putExtra(SecondaryPage.CATEGORY_INDEX, position);
-                intent.putExtra(SecondaryPage.CATEGORY_TITLE, hashTag);
-                context.startActivity(intent);
+
+                if (position == 0) {
+                    Intent intent = new Intent(context, SearchTags.class);
+                    context.startActivity(intent);
+                } else {
+                    String hashTag;
+                    hashTag = data.get(position).getCategoryName();
+                    Intent intent = new Intent(context, SecondaryPage.class);
+                    intent.putExtra(SecondaryPage.CATEGORY_INDEX, position);
+                    intent.putExtra(SecondaryPage.CATEGORY_TITLE, hashTag);
+                    context.startActivity(intent);
+                }
             }
         });
+
     }
 
     @Override
