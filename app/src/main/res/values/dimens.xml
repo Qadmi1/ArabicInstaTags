@@ -6,7 +6,7 @@
     <dimen name="list_of_tags_height">250dp</dimen>
     <dimen name="copy_button_height">80dp</dimen>
     <dimen name="card_corner_radius">20dp</dimen>
-    <dimen name="search_edit_text_width">220dp</dimen>
-    <dimen name="search_edit_text_height">80dp</dimen>
-    <dimen name="search_button_width_height">80dp</dimen>
+    <dimen name="search_edit_text_width">235dp</dimen>
+    <dimen name="search_edit_text_height">60dp</dimen>
+    <dimen name="search_button_width_height">60dp</dimen>
 </resources>
