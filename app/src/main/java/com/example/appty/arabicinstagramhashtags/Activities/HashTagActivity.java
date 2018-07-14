@@ -13,12 +13,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.appty.arabicinstagramhashtags.vo.HashTag;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -29,7 +28,6 @@ import com.example.appty.arabicinstagramhashtags.R;
 import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Created by appty on 30/06/18.
@@ -240,7 +238,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
 
             builder.append(getString(R.string.hash) + list.get(i) + "  ");
             textView.setText(builder);
-
+            textView.setMovementMethod(new ScrollingMovementMethod());
         }
 
         copyButton.setVisibility(View.VISIBLE);
@@ -304,7 +302,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         try {
             Intent intent = manager.getLaunchIntentForPackage("com.instagram.android");
             if (intent == null) {
-                Log.d(TAG, "intent==null");
+//                Log.d(TAG, "intent==null");
                 throw new PackageManager.NameNotFoundException();
             }
             intent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -337,7 +335,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         try {
             Intent intent = manager.getLaunchIntentForPackage("com.twitter.android");
             if (intent == null) {
-                Log.d(TAG, "intent==null");
+//                Log.d(TAG, "intent==null");
                 throw new PackageManager.NameNotFoundException();
             }
             intent.addCategory(Intent.CATEGORY_LAUNCHER);

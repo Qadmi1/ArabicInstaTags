@@ -16,6 +16,7 @@
         android:background="#fff"
         android:padding="8dp"
         android:textAppearance="?android:textAppearanceLarge"
+        android:scrollbars = "vertical"
         android:textColor="@color/blue" />
 
 

@@ -1,14 +1,10 @@
 package com.example.appty.arabicinstagramhashtags.Networking;
 
 import android.text.TextUtils;
-import android.util.Log;
-
 import com.example.appty.arabicinstagramhashtags.vo.HashTag;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,7 +21,7 @@ import java.util.List;
  */
 
 public class QueryUtills {
-    private static final String LOG_TAG = QueryUtills.class.getSimpleName();
+//    private static final String LOG_TAG = QueryUtills.class.getSimpleName();
 
     public static ArrayList<String> fetchHashTags(String requestUrl) {
         // Create URL object
@@ -44,7 +40,7 @@ public class QueryUtills {
         try {
             jsonResponse = makeHttpRequest(url);
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem making the HTTP request.", e);
+//            Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
 
         // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
@@ -80,10 +76,10 @@ public class QueryUtills {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             } else {
-                Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
+//                Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+//            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -147,7 +143,7 @@ public class QueryUtills {
                 JSONObject currentTag = instaTagsArray.getJSONObject(i);
 
                 int media_count = currentTag.getInt("media_count");
-                Log.v("medis count",  String.valueOf(media_count));
+//                Log.v("medis count",  String.valueOf(media_count));
 
                 String name = currentTag.getString("name");
 
@@ -163,7 +159,7 @@ public class QueryUtills {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
-            Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
+//            Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
         }
 
 
