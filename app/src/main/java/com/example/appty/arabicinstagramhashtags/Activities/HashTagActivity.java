@@ -106,9 +106,6 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         // Receive the passed tag value
         hashtag = getIntent().getStringExtra(CATEGORY_TAG);
 
-        // Add the banner Add
-        addBannerAdd();
-
         // Add the interstitial Add
         addInterstitialAd();
 
@@ -141,6 +138,13 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Add the banner Add
+        addBannerAdd();
+    }
+
     private void findViews() {
         copyButton = findViewById(R.id.copy_image_button);
 
@@ -167,16 +171,20 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
 
 
     private void addInterstitialAd() {
+
+        final AdRequest adRequest = new AdRequest.Builder().build();
         MobileAds.initialize(this,
                 "ca-app-pub-3940256099942544~3347511713");
 
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        mInterstitialAd.loadAd(adRequest);
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
                 // Code to be executed when an ad finishes loading.
+                AdRequest adRequest1 = new AdRequest.Builder().build();
+                mInterstitialAd.loadAd(adRequest1);
             }
 
             @Override

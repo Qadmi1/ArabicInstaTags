@@ -42,7 +42,6 @@ public class MainPage extends AppCompatActivity {
         categoryListName = getResources().getStringArray(R.array.categories);
         categoryListImage = getResources().obtainTypedArray(R.array.category_images);
 
-        BannerAdd();
 
         // Fill the Category Item Array list
         for (int i=0; i<categoryListName.length; i++)
@@ -101,6 +100,13 @@ public class MainPage extends AppCompatActivity {
         itemTouchHelper.attachToRecyclerView(recyclerView);
 
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BannerAdd();
+
     }
 
     private void BannerAdd() {
