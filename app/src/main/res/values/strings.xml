@@ -6,4 +6,5 @@
     <string name="copy_success">تم النسخ!</string>
     <string name="copy_label">copied</string>
     <string name="search_for_tags">بحث</string>
+    <string name="copy_insta_success">تم النسخ, الصق في انستاجرام!</string>
 </resources>
