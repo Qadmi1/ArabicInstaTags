@@ -355,7 +355,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
                 clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
                 clipboard.setPrimaryClip(clip);
-                Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
+                Toast.makeText(HashTagActivity.this, R.string.copy_insta_success, Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.copy_insta_button:
@@ -364,7 +364,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
                 clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 clip = ClipData.newPlainText(getString(R.string.copy_label), builder.toString());
                 clipboard.setPrimaryClip(clip);
-                Toast.makeText(HashTagActivity.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
+                Toast.makeText(HashTagActivity.this,R.string.copy_insta_success, Toast.LENGTH_SHORT).show();
                 if (instaCounter <= 1) {
                     mInterstitialAd.show();
                 } else {
