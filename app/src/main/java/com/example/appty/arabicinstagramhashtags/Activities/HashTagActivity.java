@@ -173,11 +173,10 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
     private void addInterstitialAd() {
 
         final AdRequest adRequest = new AdRequest.Builder().build();
-        MobileAds.initialize(this,
-                "ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(this);
 
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId(getResources().getString(R.string.inter_ad));
         mInterstitialAd.loadAd(adRequest);
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
