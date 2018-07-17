@@ -12,6 +12,7 @@ import com.example.appty.arabicinstagramhashtags.R;
 import com.example.appty.arabicinstagramhashtags.vo.CategoryItem;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,6 +36,7 @@ public class MainPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MobileAds.initialize(this, "ca-app-pub-5555881324034144~6250596660");
 
         // Find the recycler view
         RecyclerView recyclerView = findViewById(R.id.recycler_grid);

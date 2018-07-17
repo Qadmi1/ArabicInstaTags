@@ -106,6 +106,8 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         // Receive the passed tag value
         hashtag = getIntent().getStringExtra(CATEGORY_TAG);
 
+        MobileAds.initialize(this, "ca-app-pub-5555881324034144~6250596660");
+
         // Add the interstitial Add
         addInterstitialAd();
 
@@ -173,7 +175,6 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
     private void addInterstitialAd() {
 
         final AdRequest adRequest = new AdRequest.Builder().build();
-        MobileAds.initialize(this);
 
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId(getResources().getString(R.string.inter_ad));
