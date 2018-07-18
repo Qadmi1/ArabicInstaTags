@@ -17,7 +17,9 @@
         android:padding="8dp"
         android:textAppearance="?android:textAppearanceLarge"
         android:scrollbars = "vertical"
-        android:textColor="@color/blue" />
+        android:textColor="@color/blue"
+        android:textIsSelectable="true"
+        />
 
 
     <!-- Empty view is only visible when the list has no items. -->

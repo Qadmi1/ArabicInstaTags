@@ -18,6 +18,7 @@
         android:textAppearance="?android:textAppearanceMedium"
         android:scrollbars = "vertical"
         android:textColor="@color/blue"
+        android:textIsSelectable="true"
 
         />
 
