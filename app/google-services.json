@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "197642906622",
+    "firebase_url": "https://arabicinstatags.firebaseio.com",
+    "project_id": "arabicinstatags",
+    "storage_bucket": "arabicinstatags.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197642906622:android:bf5ee1d443983716",
+        "android_client_info": {
+          "package_name": "com.qadmi.appty.arabicinstagramhashtags"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197642906622-quij3vu4v4nq2197422p3t2mpl7osccf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qadmi.appty.arabicinstagramhashtags",
+            "certificate_hash": "e884d0c90c71c35e967286da10da23e35fdbe341"
+          }
+        },
+        {
+          "client_id": "197642906622-8rnedoq45b870jguq0kni86954s9bg58.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4FwNSDX44JYf7VHpb8eUEHZM2e5wXhqI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197642906622-8rnedoq45b870jguq0kni86954s9bg58.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

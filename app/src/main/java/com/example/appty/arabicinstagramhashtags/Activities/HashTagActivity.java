@@ -177,7 +177,7 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
         final AdRequest adRequest = new AdRequest.Builder().build();
 
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(getResources().getString(R.string.inter_ad));
+        mInterstitialAd.setAdUnitId("ca-app-pub-5555881324034144/8493616623");
         mInterstitialAd.loadAd(adRequest);
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
@@ -242,11 +242,11 @@ public class HashTagActivity extends AppCompatActivity implements LoaderManager.
 
         list = tags;
         TextView textView = findViewById(R.id.list_of_thirty_tags);
+        textView.setTextIsSelectable(true);
         for (int i = 0; i < list.size(); i++) {
 
             builder.append(getString(R.string.hash) + list.get(i) + "  ");
             textView.setText(builder);
-            textView.setMovementMethod(new ScrollingMovementMethod());
         }
 
         copyButton.setVisibility(View.VISIBLE);

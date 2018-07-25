@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categories">
+        <item>بحث</item>
+        <item>لايك</item>
+        <item>حلا</item>
+        <item>دول</item>
+        <item>ازياء</item>
+        <item>تجميل</item>
+        <item>رياضة</item>
+        <item>طب</item>
+        <item>طبخ</item>
+        <item>اكسسوارات</item>
+        <item>اكل</item>
+        <item>سيارات</item>
+        <item>مشروبات</item>
+        <item>تصوير</item>
+        <item>فن</item>
+        <item>توصيل</item>
+        <item>ترفيه</item>
+        <item>شوز</item>
+        <item>سفر</item>
+        <item>تقنية</item>
+        <item>صحة</item>
+        <item>حيوانات</item>
+    </string-array>
+
+    <array name="category_images">
+        <item>@drawable/search</item>
+        <item>@drawable/like</item>
+        <item>@drawable/desert</item>
+        <item>@drawable/countries</item>
+        <item>@drawable/wear</item>
+        <item>@drawable/beauty</item>
+        <item>@drawable/sport</item>
+        <item>@drawable/doctor</item>
+        <item>@drawable/cook</item>
+        <item>@drawable/accessory</item>
+        <item>@drawable/food</item>
+        <item>@drawable/car</item>
+        <item>@drawable/beverage</item>
+        <item>@drawable/photo</item>
+        <item>@drawable/art</item>
+        <item>@drawable/delivery</item>
+        <item>@drawable/entertainment</item>
+        <item>@drawable/shoes</item>
+        <item>@drawable/travel</item>
+        <item>@drawable/tech</item>
+        <item>@drawable/health</item>
+        <item>@drawable/animal</item>
+    </array>
+
+
+
+</resources>

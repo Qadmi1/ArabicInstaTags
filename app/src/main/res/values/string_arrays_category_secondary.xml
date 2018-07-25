@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--       0       -->
+    <string-array name="like">
+        <item>لايك</item>
+        <item>فولو</item>
+    </string-array>
+
+    <array name="like_images">
+        <item>@drawable/like</item>
+        <item>@drawable/follow</item>
+    </array>
+
+    <!--       1       -->
+
+    <string-array name="desert">
+        <item>حلا</item>
+        <item>كيك</item>
+        <item>شوكولاتة</item>
+
+
+    </string-array>
+
+    <array name="desert_images">
+        <item>@drawable/desert</item>
+        <item>@drawable/cake</item>
+        <item>@drawable/choco</item>
+    </array>
+
+    <!--     2       -->
+
+    <string-array name="country">
+
+        <item>السعودية</item>
+        <item>الامارات</item>
+        <item>الكويت</item>
+        <item>البحرين</item>
+        <item>قطر</item>
+        <item>عمان</item>
+        <item>اليمن</item>
+        <item>مصر</item>
+        <item>العراق</item>
+
+    </string-array>
+
+    <array name="countries_images">
+        <item>@drawable/saudi</item>
+        <item>@drawable/enirates</item>
+        <item>@drawable/kuwait</item>
+        <item>@drawable/bahrain</item>
+        <item>@drawable/qatar</item>
+        <item>@drawable/oman</item>
+        <item>@drawable/yemen</item>
+        <item>@drawable/egypt</item>
+        <item>@drawable/iraq</item>
+    </array>
+
+    <!--       3       -->
+
+    <string-array name="dress">
+        <item>ازياء</item>
+        <item>فساتين</item>
+        <item>بلوزة</item>
+        <item>سراويل</item>
+    </string-array>
+
+    <array name="dress_images">
+        <item>@drawable/wear</item>
+        <item>@drawable/dress</item>
+        <item>@drawable/blouse</item>
+        <item>@drawable/pants</item>
+    </array>
+
+    <!--       4       -->
+
+    <string-array name="beauty">
+        <item>تجميل</item>
+        <item>مكياج</item>
+        <item>تسريحات</item>
+    </string-array>
+
+    <array name="beauty_images">
+        <item>@drawable/beauty</item>
+        <item>@drawable/makeup</item>
+        <item>@drawable/hair</item>
+    </array>
+
+    <!--       5       -->
+
+    <string-array name="sport">
+        <item>رياضة</item>
+        <item>كورة</item>
+        <item>تمرين</item>
+    </string-array>
+
+    <array name="sport_images">
+        <item>@drawable/sport</item>
+        <item>@drawable/football</item>
+        <item>@drawable/exercise</item>
+    </array>
+
+    <!--       6       -->
+
+    <string-array name="doctor">
+        <item>أسنان</item>
+        <item>عمليات</item>
+        <item>علاج</item>
+        <item>دواء</item>
+    </string-array>
+
+    <array name="doctor_images">
+        <item>@drawable/teeth</item>
+        <item>@drawable/surgery</item>
+        <item>@drawable/cure</item>
+        <item>@drawable/medicine</item>
+
+    </array>
+
+    <!--       7       -->
+
+    <string-array name="cook">
+        <item>طبخ</item>
+        <item>وصفات</item>
+
+    </string-array>
+
+    <array name="cook_images">
+        <item>@drawable/cook</item>
+        <item>@drawable/recipe</item>
+    </array>
+
+    <!--       8       -->
+
+    <string-array name="accessory">
+        <item>اكسسوارات</item>
+        <item>قلادة</item>
+        <item>حلق</item>
+        <item>اسواره</item>
+
+
+    </string-array>
+
+    <array name="accessory_images">
+        <item>@drawable/accessory</item>
+        <item>@drawable/accessory</item>
+        <item>@drawable/earrings</item>
+        <item>@drawable/bracelet</item>
+        <item></item>
+
+    </array>
+
+    <!--       9       -->
+
+    <string-array name="food">
+        <item>اكل</item>
+        <item>فطور</item>
+        <item>غداء</item>
+        <item>عشاء</item>
+
+
+    </string-array>
+
+    <array name="food_images">
+        <item>@drawable/food</item>
+        <item>@drawable/breakfast</item>
+        <item>@drawable/lunch</item>
+        <item>@drawable/dinner</item>
+    </array>
+
+    <!--       10       -->
+
+    <string-array name="car">
+        <item>سيارات</item>
+        <item>تويوتا</item>
+        <item>نيسان</item>
+        <item>هوندا</item>
+        <item>شفر</item>
+        <item>فورد</item>
+        <item>مرسيدس</item>
+    </string-array>
+
+    <array name="car_images">
+        <item>@drawable/car</item>
+        <item>@drawable/toyota</item>
+        <item>@drawable/nissan</item>
+        <item>@drawable/honda</item>
+        <item>@drawable/cheve</item>
+        <item>@drawable/ford</item>
+        <item>@drawable/merc</item>
+    </array>
+
+    <!--       11       -->
+
+    <string-array name="beverage">
+        <item>قهوة</item>
+        <item>شاي</item>
+        <item>عصير</item>
+    </string-array>
+
+    <array name="beverage_images">
+        <item>@drawable/coffee</item>
+        <item>@drawable/tea</item>
+        <item>@drawable/juice</item>
+    </array>
+
+    <!--       12       -->
+
+    <string-array name="photo">
+        <item>تصوير</item>
+        <item>فيديو</item>
+        <item>مشهد</item>
+    </string-array>
+
+    <array name="photo_images">
+        <item>@drawable/photo</item>
+        <item>@drawable/video</item>
+        <item>@drawable/action</item>
+    </array>
+
+    <!--       13       -->
+
+    <string-array name="art">
+        <item>فن</item>
+        <item>تصميم</item>
+        <item>رسم</item>
+        <item>فوتو</item>
+    </string-array>
+
+    <array name="art_images">
+        <item>@drawable/art</item>
+        <item>@drawable/design</item>
+        <item>@drawable/draw</item>
+        <item>@drawable/photoshop</item>
+    </array>
+
+    <!--       14       -->
+
+    <string-array name="delivery">
+        <item>توصيل</item>
+        <item>توصيل_\nمطاعم</item>
+        <item>توصيل_\nمشاوير</item>
+        <item>توصيل_\nطلبات</item>
+        <item>توصيل_\nهدايا</item>
+    </string-array>
+
+    <array name="delivery_images">
+        <item>@drawable/delivery</item>
+        <item>@drawable/food_delivery</item>
+        <item>@drawable/taxi</item>
+        <item>@drawable/delivery_package</item>
+        <item>@drawable/gift</item>
+    </array>
+
+    <!--       15       -->
+
+    <string-array name="entertainment">
+        <item>ترفيه</item>
+        <item>مشاهير</item>
+        <item>مسلسلات</item>
+        <item>افلام</item>
+        <item>اغاني</item>
+    </string-array>
+
+    <array name="entertainment_images">
+        <item>@drawable/entertainment</item>
+        <item>@drawable/celeb</item>
+        <item>@drawable/series</item>
+        <item>@drawable/film</item>
+        <item>@drawable/music</item>
+    </array>
+
+    <!--       16       -->
+
+    <string-array name="shoe">
+        <item>شوز</item>
+        <item>كعب</item>
+        <item>اديداس</item>
+    </string-array>
+
+    <array name="shoe_images">
+        <item>@drawable/shoes</item>
+        <item>@drawable/heel</item>
+        <item>@drawable/adidas</item>
+    </array>
+
+    <!--       17       -->
+
+    <string-array name="travel">
+        <item>سفر</item>
+        <item>سياحة</item>
+    </string-array>
+
+    <array name="travel_images">
+        <item>@drawable/travel</item>
+        <item>@drawable/eiffel</item>
+    </array>
+
+    <!--       18       -->
+
+    <string-array name="tech">
+        <item>تقنية</item>
+        <item>جوال</item>
+        <item>العاب</item>
+        <item>كاميرا</item>
+    </string-array>
+
+    <array name="tech_images">
+        <item>@drawable/tech</item>
+        <item>@drawable/phone</item>
+        <item>@drawable/games</item>
+        <item>@drawable/photo</item>
+    </array>
+
+    <!--       19       -->
+
+    <string-array name="health">
+        <item>صحة</item>
+        <item>دايت</item>
+        <item>رشاقة</item>
+    </string-array>
+
+    <array name="health_images">
+        <item>@drawable/health</item>
+        <item>@drawable/carrot</item>
+        <item>@drawable/agile</item>
+    </array>
+
+    <!--       20       -->
+
+    <string-array name="animals">
+        <item>حيوانات</item>
+        <item>طيور</item>
+        <item>ببغاء</item>
+        <item>قطط</item>
+    </string-array>
+
+    <array name="animals_images">
+        <item>@drawable/animal</item>
+        <item>@drawable/bird</item>
+        <item>@drawable/parrot</item>
+        <item>@drawable/cat</item>
+    </array>
+
+</resources>

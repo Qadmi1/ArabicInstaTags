@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/list_of_thirty_tags_search"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/search_edit_text"
+            android:layout_width="@dimen/search_edit_text_width"
+            android:layout_height="@dimen/search_edit_text_height"
+            android:layout_marginBottom="8dp"
+            android:background="#fff"
+            android:textStyle="bold"
+            android:padding="4dp"
+            android:gravity="right|center_vertical" />
+
+
+        <ImageButton
+            android:id="@+id/search_image_button"
+            android:layout_width="@dimen/search_button_width_height"
+            android:layout_height="@dimen/search_button_width_height"
+            android:layout_marginLeft="6dp"
+            android:background="@color/light_pale_orange"
+            android:scaleType="fitCenter"
+            android:src="@drawable/search" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/list_of_thirty_tags_search"
+        style="@style/tag_text"
+        android:layout_width="@dimen/list_of_tags_width"
+        android:layout_height="@dimen/list_of_tags_height"
+        android:layout_centerInParent="true"
+        android:background="#fff"
+        android:padding="8dp"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/blue"
+        android:textIsSelectable="true"
+        />
+
+
+    <!-- Empty view is only visible when the list has no items. -->
+    <TextView
+        android:id="@+id/empty_view_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textAppearance="?android:textAppearanceMedium" />
+
+
+    <LinearLayout
+        android:layout_width="@dimen/list_of_tags_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/list_of_thirty_tags_search"
+        android:layout_centerHorizontal="true"
+        android:background="#fff"
+        android:orientation="horizontal"
+        >
+
+        <ImageButton
+            android:id="@+id/copy_image_button_search"
+            style="@style/copy_buttons"
+            app:srcCompat="@drawable/copy" />
+
+
+        <ImageButton
+            android:id="@+id/copy_insta_button_search"
+            style="@style/copy_buttons"
+            app:srcCompat="@drawable/insta" />
+
+        <ImageButton
+            android:id="@+id/copy_face_button_search"
+            style="@style/copy_buttons"
+
+            app:srcCompat="@drawable/face" />
+
+        <ImageButton
+            android:id="@+id/copy_twitter_button_search"
+            style="@style/copy_buttons"
+
+            app:srcCompat="@drawable/twitter" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/loading_indicator_search"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad" />
+
+</RelativeLayout>
